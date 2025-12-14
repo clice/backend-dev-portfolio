@@ -47,6 +47,30 @@ O objetivo deste projeto é demonstrar:
         ├── .venv/
         ├── requirements.txt
         └── README.md
+        ├── app/
+        │   ├── main.py
+        │   ├── database.py  # Conexão com o banco de dados
+        │   │
+        │   ├── models/  # Modelos do banco (SQLAlchemy)
+        │   │   └── task.py
+        │   │
+        │   ├── schemas/  # Validação de dados (Pydantic)
+        │   │   └── task.py
+        │   │
+        │   ├── repositories/
+        │   │   └── task_repository.py
+        │   │
+        │   ├── services/
+        │   │   └── task_service.py
+        │   │
+        │   └── routers/  # Rotas da API
+        │       └── task_router.py
+        │
+        ├── tests/
+        │   └── test_tasks.py
+        │
+        ├── requirements.txt
+        └── README.md
 
 ---
 

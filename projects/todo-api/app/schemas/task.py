@@ -1,6 +1,6 @@
 """
-Schemas definem como os dados entram e saem da API.
-Eles NÃO falam com o banco diretamente.
+Schemas Pydantic relacionados à entidade Task.
+Definem entrada e saída da API.
 """
 
 from pydantic import BaseModel
@@ -10,19 +10,19 @@ from typing import Optional
 class TaskBase(BaseModel):
     title: str
     description: Optional[str] = None
-    completed: bool = False
+    done: bool = False
 
 
 class TaskCreate(TaskBase):
     """
-    Usado quando o cliente CRIA uma tarefa.
+    Dados necessários para criar ou atualizar uma tarefa.
     """
     pass
 
 
 class TaskResponse(TaskBase):
     """
-    Usado quando a API DEVOLVE uma tarefa.
+    Dados retornados pela API.
     """
     id: int
 

@@ -1,19 +1,19 @@
 """
-Aqui definimos as tabelas do banco de dados.
-Cada classe representa uma tabela.
+Modelo da tabela de tarefas.
+Cada instância representa uma linha no banco.
 """
 
 from sqlalchemy import Column, Integer, String, Boolean
-from .database import Base
+from app.database import Base
 
 
 class Task(Base):
     """
-    Modelo da tabela 'tasks'.
+    Tabela 'tasks' do banco de dados.
     """
     __tablename__ = "tasks"
 
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, nullable=False)
     description = Column(String, nullable=True)
-    completed = Column(Boolean, default=False)
+    done = Column(Boolean, default=False)
