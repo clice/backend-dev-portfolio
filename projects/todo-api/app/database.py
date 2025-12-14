@@ -1,25 +1,27 @@
 """
-Este arquivo cuida EXCLUSIVAMENTE da conexão com o banco de dados.
-Aqui usamos SQLite para facilitar o início.
+Configuração da conexão com o banco de dados.
+Agora usando PostgreSQL + variáveis de ambiente.
 """
 
+import os
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-# URL do banco (arquivo local SQLite)
-DATABASE_URL = "sqlite:///./todo.db"
+# Carrega variáveis do .env
+load_dotenv()
 
-# Cria o motor de conexão
-engine = create_engine(
-    DATABASE_URL, connect_args={"check_same_thread": False}
-)
+DATABASE_URL = os.getenv("DATABASE_URL")
 
-# Cria sessões para conversar com o banco
+# Cria o engine do PostgreSQL
+engine = create_engine(DATABASE_URL)
+
+# Cria sessões de banco
 SessionLocal = sessionmaker(
     autocommit=False,
     autoflush=False,
     bind=engine
 )
 
-# Classe base para os modelos
+# Base para os modelos ORM
 Base = declarative_base()
