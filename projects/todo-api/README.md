@@ -1,3 +1,80 @@
+# ✅ To-do API — FastAPI & PostgreSQL
+
+API REST para gerenciamento de tarefas (To-do List), desenvolvida em **Python** com **FastAPI**, **PostgreSQL**, **SQLAlchemy** e **JWT Authentication**.
+
+Este projeto faz parte do meu **portfólio de desenvolvimento backend** e demonstra a construção de uma API completa, desde a arquitetura até o deploy em produção.
+
+---
+
+## 🌍 API em Produção
+
+- **Base URL:** https://SEU-SERVICO.onrender.com  
+- **Documentação (Swagger):** https://SEU-SERVICO.onrender.com/docs
+
+> A API está hospedada no **Render**, utilizando PostgreSQL e variáveis de ambiente.
+
+---
+
+## 🎯 Objetivo do Projeto
+
+Demonstrar, de forma prática, os principais fundamentos do desenvolvimento backend:
+
+- Arquitetura em camadas (routers, services, repositories)
+- CRUD completo com banco relacional
+- Autenticação e autorização com JWT
+- Boas práticas de organização de código
+- Uso de migrações com Alembic
+- Testes automatizados
+- Deploy em ambiente de produção
+
+---
+
+## 🧠 Funcionalidades
+
+### 🔐 Autenticação
+
+- Cadastro de usuário
+- Login com geração de token JWT
+- Proteção de rotas autenticadas
+
+### ✅ Tarefas (Tasks)
+
+- Criar tarefa
+- Listar tarefas do usuário autenticado
+- Buscar tarefa por ID
+- Atualizar tarefa
+- Remover tarefa
+
+> Cada usuário tem acesso **somente às suas próprias tarefas**.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- **Python 3.10+**
+- **FastAPI**
+- **SQLAlchemy**
+- **PostgreSQL**
+- **Alembic**
+- **JWT (python-jose)**
+- **Passlib (bcrypt)**
+- **Pytest**
+- **Docker (PostgreSQL local)**
+- **Render (Deploy)**
+- Python 3.10+
+- FastAPI
+- Uvicorn
+- SQLAlchemy
+- SQLite
+- Pydantic
+- Pytest
+
+---
+
+## 📁 Estrutura do Projeto
+
+
+
 # ✅ To-do API — FastAPI
 
 API REST para gerenciamento de tarefas (To-do List), desenvolvida em Python utilizando FastAPI e SQLAlchemy.  
@@ -32,45 +109,27 @@ O objetivo deste projeto é demonstrar:
 
 ## 📁 Estrutura do projeto
 
-    └── todo-api/
-        ├── app/
-        │   ├── __init__.py  
-        │   ├── main.py      # Rotas da API
-        │   ├── database.py  # Conexão com o banco de dados
-        │   ├── models.py    # Modelos do banco (SQLAlchemy)
-        │   ├── schemas.py   # Validação de dados (Pydantic)
-        │   └── crud.py      # Regras de negócio
-        │
-        ├── tests/
-        │   └── test_tasks.py  # Testes automatizadas
-        │
-        ├── .venv/
-        ├── requirements.txt
-        └── README.md
-        ├── app/
-        │   ├── main.py
-        │   ├── database.py  # Conexão com o banco de dados
-        │   │
-        │   ├── models/  # Modelos do banco (SQLAlchemy)
-        │   │   └── task.py
-        │   │
-        │   ├── schemas/  # Validação de dados (Pydantic)
-        │   │   └── task.py
-        │   │
-        │   ├── repositories/
-        │   │   └── task_repository.py
-        │   │
-        │   ├── services/
-        │   │   └── task_service.py
-        │   │
-        │   └── routers/  # Rotas da API
-        │       └── task_router.py
-        │
-        ├── tests/
-        │   └── test_tasks.py
-        │
-        ├── requirements.txt
-        └── README.md
+    todo-api/
+    ├─ app/
+    │  ├─ main.py
+    │  ├─ database.py
+    │  ├─ models.py
+    │  ├─ schemas.py
+    │  ├─ auth.py
+    │  └─ deps.py
+    │
+    ├─ frontend/
+    │  ├─ index.html      # login / cadastro
+    │  ├─ tasks.html      # tela principal
+    │  ├─ style.css
+    │  └─ app.js
+    │
+    ├─ tests/
+    │  └─ test_api.py
+    │
+    ├─ requirements.txt
+    ├─ Dockerfile
+    └─ README.md
 
 ---
 
@@ -120,6 +179,13 @@ Para rodar os testes:
 
 ```bash
 pytest -v
+```
+
+## Dockerfile
+
+```bash
+docker build -t todo-api .  # Dar build na imagem
+docker run -d --name todo-api-container -p 8000:8000 todo-api  # Rodar o container
 ```
 
 ## 📌 Próximos passos
